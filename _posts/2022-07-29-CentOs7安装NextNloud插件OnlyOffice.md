@@ -85,5 +85,16 @@ curl 127.0.0.1:8090/welcome
 IP地址:8090
 ···
 如下显示即安装完成
- ! [](/images/934.png)
+ ![](/images/932.png)
+ 随着版本不同画面会有不同，只要logo出现在页面就是ok
  
+ # onlyoffice插件链接NextCloud
+ ## 安装onlyoffice插件
+
+打开nextcloud网页，在个人头像-应用-office&text栏，选择onlyoffice，直接安装并使用
+
+![](/images/935.png)
+
+## onlyoffice插件启用文档服务
+
+在设置-onlyoffice设置中，输入上一步访问成功的网址(IP地址:8090)，点击save保存，有提示success成功，安装成功，接下来就可以在线预览和编辑office文档
