@@ -40,4 +40,23 @@ snap set nextcloud ports.http=8000
  snap remove nextcloud 
 ```
 Nextcloud可以实现文件上传，下载，分享，照片的在线幻灯播放，视频在线播放
-![](/images/931.png"Nextcloud界面")
+![](/images/931.png "Nextcloud界面")
+# Nextcloud安装SSL证书
+如果以后想安装在线编辑office插件，建议先不要装SSL.
+安装前一定先确保你的域名已经成功解析到你的VPS主机上，然后执行命令：
+```
+nextcloud.enable-https lets-encrypt #安装Let's Encrypt SSL
+#如果你想使用自己的证书，请执行：
+nextcloud.enable-https self-signed
+#如果你是使用自已的证书，请在执行命令后找到SSL证书的路径，将自己的证书上传替换生成的自签名证书文件即可。
+
+####如果提示 command not found，请加上路径
+/snap/bin/nextcloud.enable-https lets-encrypt
+/snap/bin/nextcloud.enable-https self-signed
+```
+有时候，比如安装onlyoffice的时候不能加密，需要卸载证书，请执行
+```
+nextcloud.disable-https lets-encrypt
+```
+NextCloud 到此安装完毕
+下一篇介绍NextCloud在线编辑office和离线下载视频，
