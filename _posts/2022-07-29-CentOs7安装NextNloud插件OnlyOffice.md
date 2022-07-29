@@ -100,3 +100,8 @@ IP地址:8090
 在设置-onlyoffice设置中，输入上一步访问成功的网址（http://IP地址:8090 ） ，点击save保存，有提示success成功，安装成功，接下来就可以在线预览和编辑office文档
  ![](/images/936.png)
 
+到此，OnlyOffice安装完毕，可以开心的新建office文档，并且在线编辑了
+ ![](/images/937.png)
+ ![](/images/938.png)
+ 
+ 下一篇介绍NextCloud的终极神器--离线下载
