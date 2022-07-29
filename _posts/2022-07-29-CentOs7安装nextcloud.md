@@ -40,4 +40,4 @@ snap set nextcloud ports.http=8000
  snap remove nextcloud 
 ```
 Nextcloud可以实现文件上传，下载，分享，照片的在线幻灯播放，视频在线播放
-![Nextcloud界面](931.png)
+![](/images/931.png"Nextcloud界面")
