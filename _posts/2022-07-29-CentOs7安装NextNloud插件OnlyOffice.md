@@ -97,6 +97,6 @@ IP地址:8090
 
 ## onlyoffice插件启用文档服务
 
-在设置-onlyoffice设置中，输入上一步访问成功的网址(http://IP地址:8090)，点击save保存，有提示success成功，安装成功，接下来就可以在线预览和编辑office文档
-![](/images/936.png)
+在设置-onlyoffice设置中，输入上一步访问成功的网址（http://IP地址:8090 ） ，点击save保存，有提示success成功，安装成功，接下来就可以在线预览和编辑office文档
+ ![](/images/936.png)
 
