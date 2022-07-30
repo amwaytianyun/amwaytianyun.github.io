@@ -1,0 +1,9 @@
+到目前为止，网上介绍Nextcloud下载插件的文章全都是以OcDownloder为对象的，但NextCloud更新到了目前版本已经不再支持安装Oc插件了。
+而一个新的插件横空出世，那就是NCDownloader，这款插件简单到直接在NextCloud里面点击一次安装并开启按钮就可以实现离线下载。
+```
+打开NextCloud,
+点击头像下面的应用
+找到NCDownloader
+点击安装并启用
+```
+搞定
