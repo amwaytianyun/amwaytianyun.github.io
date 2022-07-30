@@ -1,12 +1,10 @@
 Nextcloud通过插件内置了文件下载，分享，Office文档、PDF文档查看以及在线编辑，还有日历、RSS等功能，已经脱胎于网盘向着协作式办公平台发展，下面我来演示一下CentOs7安装nextcloud过程。
 # 安装Snap
 安装前修改好hostname。这一步可以不做，喜欢用域名的可以做，但可能与某些插件冲突，不建议做。直接跳转到开始安装即可。
+ 
 
- <details><summary>就要用域名</summary>
 
-<p>
-
- 就要用域名的操作如下，注意替换自己域名和IP。在终端窗口中输入命令：hostname或uname –n，均可以查看到当前主机的主机名：
+就要用域名的操作如下，注意替换自己域名和IP。在终端窗口中输入命令：hostname或uname –n，均可以查看到当前主机的主机名：
  
 ```
 vi /etc/hosts
@@ -18,8 +16,6 @@ hostname -F /etc/hostname #重启
 hostname #再次查看
 ```
  
- </p>
-  </details>
   
 ## 开始安装
 如果不用域名，那从这里开始输入
@@ -53,11 +49,10 @@ snap set nextcloud ports.http=8000
 Nextcloud可以实现文件上传，下载，分享，照片的在线幻灯播放，视频在线播放
 ![](/images/931.png "Nextcloud界面")
 # Nextcloud安装SSL证书
-强烈不建议安装，会和某些插件冲突
+强烈不建议安装，会和某些插件冲突，
+比如安装在线编辑office插件。
 
-<details><summary>一定要装SSL</summary>
- <p>
-如果以后想安装在线编辑office插件，建议先不要装SSL.
+
 安装前一定先确保你的域名已经成功解析到你的VPS主机上，然后执行命令：
   
 ```
@@ -78,9 +73,6 @@ nextcloud.enable-https self-signed
 
 nextcloud.disable-https lets-encrypt
 
- </p>
-
-</details>
 
 NextCloud 到此安装完毕
 下一篇介绍NextCloud在线编辑office和离线下载视频，
