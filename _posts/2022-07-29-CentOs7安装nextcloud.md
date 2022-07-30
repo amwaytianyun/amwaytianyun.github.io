@@ -55,7 +55,7 @@ Nextcloud可以实现文件上传，下载，分享，照片的在线幻灯播�
 # Nextcloud安装SSL证书
 强烈不建议安装，会和某些插件冲突
 
-<details>
+<details><summary>一定要装SSL</summary>
  <p>
 如果以后想安装在线编辑office插件，建议先不要装SSL.
 安装前一定先确保你的域名已经成功解析到你的VPS主机上，然后执行命令：
