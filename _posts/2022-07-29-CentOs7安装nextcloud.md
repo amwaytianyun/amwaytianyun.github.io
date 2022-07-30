@@ -61,6 +61,7 @@ Nextcloud可以实现文件上传，下载，分享，照片的在线幻灯播�
 安装前一定先确保你的域名已经成功解析到你的VPS主机上，然后执行命令：
   
 ```
+  
 nextcloud.enable-https lets-encrypt #安装Let's Encrypt SSL
 #如果你想使用自己的证书，请执行：
 nextcloud.enable-https self-signed
@@ -69,8 +70,10 @@ nextcloud.enable-https self-signed
 ####如果提示 command not found，请加上路径
 /snap/bin/nextcloud.enable-https lets-encrypt
 /snap/bin/nextcloud.enable-https self-signed
+  
 
 ```
+  
 有时候，比如安装onlyoffice的时候不能加密，需要卸载证书，请执行
 
 nextcloud.disable-https lets-encrypt
