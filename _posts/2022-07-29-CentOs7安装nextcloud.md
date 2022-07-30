@@ -7,6 +7,7 @@ Nextcloud通过插件内置了文件下载，分享，Office文档、PDF文档�
 <p>
 
  就要用域名的操作如下，注意替换自己域名和IP。在终端窗口中输入命令：hostname或uname –n，均可以查看到当前主机的主机名：
+ 
 ```
 vi /etc/hosts
 151.254.64.178 pan.ddaniba.tokyo pan  
@@ -16,6 +17,7 @@ pan.ddaniba.tokyo
 hostname -F /etc/hostname #重启
 hostname #再次查看
 ```
+ 
  </p>
   </details>
   
