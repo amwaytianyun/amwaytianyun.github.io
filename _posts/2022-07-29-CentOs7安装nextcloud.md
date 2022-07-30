@@ -1,6 +1,7 @@
 Nextcloud通过插件内置了文件下载，分享，Office文档、PDF文档查看以及在线编辑，还有日历、RSS等功能，已经脱胎于网盘向着协作式办公平台发展，下面我来演示一下CentOs7安装nextcloud过程。
 # 安装Snap
 安装前修改好hostname。这一步可以不做，喜欢用域名的可以做，但可能与某些插件冲突，不建议做。直接跳转到开始安装即可。
+
  <details><summary>就要用域名</summary>
 
 <p>
@@ -15,7 +16,7 @@ pan.ddaniba.tokyo
 hostname -F /etc/hostname #重启
 hostname #再次查看
 ```
- <p>
+ </p>
   </details>
   
 ## 开始安装
