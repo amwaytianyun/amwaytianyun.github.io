@@ -51,10 +51,12 @@ Nextcloud可以实现文件上传，下载，分享，照片的在线幻灯播�
 ![](/images/931.png "Nextcloud界面")
 # Nextcloud安装SSL证书
 强烈不建议安装，会和某些插件冲突
+
 <details>
  <p>
 如果以后想安装在线编辑office插件，建议先不要装SSL.
 安装前一定先确保你的域名已经成功解析到你的VPS主机上，然后执行命令：
+  
 ```
 nextcloud.enable-https lets-encrypt #安装Let's Encrypt SSL
 #如果你想使用自己的证书，请执行：
@@ -64,12 +66,15 @@ nextcloud.enable-https self-signed
 ####如果提示 command not found，请加上路径
 /snap/bin/nextcloud.enable-https lets-encrypt
 /snap/bin/nextcloud.enable-https self-signed
+
 ```
 有时候，比如安装onlyoffice的时候不能加密，需要卸载证书，请执行
-```
+
 nextcloud.disable-https lets-encrypt
-```
-  <p>
-  <details>
+
+ </p>
+
+</details>
+
 NextCloud 到此安装完毕
 下一篇介绍NextCloud在线编辑office和离线下载视频，
