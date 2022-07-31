@@ -79,11 +79,14 @@ docker run -d --name nextcloud \
     -p 8080:80 \
     nextcloud
  ```
- 打开浏览器，输入ip:8080即可安装，经过测试Docker安装后的nextcloud性能下降很多，这里只是给出方法进行测试，不建议这样安装。
+ 打开浏览器，输入ip:8080即可使用，首次打开会是一个管理员注册页面，数据库选择mysql/MariaDB即可，注意host栏不用填写地址，一定要填写mysql。经过测试Docker安装后的nextcloud性能下降很多，这里只是给出方法进行测试，不建议这样安装。
  
 # docker清空
 如果安装有问题，可以随时清空docker，重新来过，很方便测试。
 ```
+docker kill mysql
+docker kill nextcloud
+......
 docker system prune
 ```
 
