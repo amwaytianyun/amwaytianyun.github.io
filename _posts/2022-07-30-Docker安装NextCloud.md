@@ -12,7 +12,7 @@ yum-config-manager \
     --add-repo \
     https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo
 ```
-## 更新 yum 软件源缓存，并安装 docker-io(有些系统需要docker-ce,或者docker-io）
+## 更新 yum 软件源缓存，并安装 docker(有些系统需要docker-ce,或者docker-io）
 ```
 yum makecache fast
 yum install docker
@@ -81,7 +81,9 @@ docker run -d --name nextcloud \
  ```
  打开浏览器，输入ip:8080即可使用，首次打开会是一个管理员注册页面，数据库选择mysql/MariaDB即可，注意host栏不用填写地址，一定要填写mysql。经过测试Docker安装后的nextcloud性能下降很多，这里只是给出方法进行测试，不建议这样安装。
  
-# docker清空
+ 
+ 
+## docker清空
 如果安装有问题，可以随时清空docker，重新来过，很方便测试。
 ```
 docker kill mysql
@@ -89,4 +91,11 @@ docker kill nextcloud
 ......
 docker system prune
 ```
-
+# 添加自动重启 
+ 都测试没问题之后，需要在添加自动启动，否则服务器重启之后，相应容器不会启动
+ ```
+ docker update --restart=always mydql
+ docker update --restart=always nextcloud
+ ```
+ 
+ 至此，在Docker中部署NextCloud全部完成，NextCloud有很多插件可以测试，祝大家使用愉快。
