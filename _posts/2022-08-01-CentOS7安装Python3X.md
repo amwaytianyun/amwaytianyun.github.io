@@ -54,7 +54,7 @@ Centos7默认安装了python2.7.5 因为一些命令要用它比如yum 它使用
     
 # 修正
     ln -s /usr/local/bin/python3 /usr/bin/python #系统默认版本更换为3.10
-    mv /usr/bin/pip pip8
+    mv /usr/bin/pip pip.bak
     ln -s /usr/local/bin/pip3 /usr/bin/pip #修改系统默认pip
     vi /usr/bin/yum #新版python可能影响yum,需要改回2.7
         #把文件头部的#!/usr/bin/python改成#!/usr/bin/python2.7保存退出
