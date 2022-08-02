@@ -1,35 +1,29 @@
-cloudreve 开源私有网盘(带离线下载)
-环境
+CentOS7以LNMP搭建Cloudreve.md
 
-CentOS Linux release 7.6.1810 (Core)
-3.10.0-957.21.3.el7.x86_64
 
-    1
-    2
 
-安装LNMP环境
+安装LNMP环境,相关文章很多，我也写过，请参考
 
-参考：https://help.aliyun.com/document_detail/97251.html
+
 Nginx版本：Nginx 1.12.2
 MySQL版本：MySQL 5.7.25
 PHP版本：PHP 7.0.33
-安装
 
-https://cloudreve.org/download.php 下载
+# 安装
+[下载最新版](https://github.com/cloudreve/Cloudreve/releases)
 
 cd /usr/share/nginx/html/
-wget https://download.cloudreve.org/build/076b9c436475821219e5856755add63acc92c5f1.zip
-unzip 076b9c436475821219e5856755add63acc92c5f1.zip
-
-    1
-    2
-    3
-
+wget https://github.com/cloudreve/Cloudreve/releases/download/3.5.3/cloudreve_3.5.3_linux_amd64.tar.gz
+tar -zxvf cloudreve_3.5.3_linux_amd64.tar.gz
+chmod +x ./cloudreve
+./cloudreve
+admin@cloudreve.org
+[Info]    2022-08-01 23:18:11 初始管理员密码：6xwFjVsk
 配置
 
-vi /etc/nginx/nginx.conf
+    vi /etc/nginx/nginx.conf
 
-# 开启默认index.php  添加伪静态。
+    # 开启默认index.php  添加伪静态。
         location / {
           root   html;
           index  index.html index.htm index.php;
@@ -39,39 +33,21 @@ vi /etc/nginx/nginx.conf
                 }
         }
         
-#开启nginx 支持PHP
+    #开启nginx 支持PHP
         location ~ \.php$ {
             root           /usr/share/nginx/html;
             fastcgi_pass   127.0.0.1:9000;
             fastcgi_index  index.php;
             fastcgi_param  SCRIPT_FILENAME  /usr/share/nginx/html$fastcgi_script_name;
             include        fastcgi_params;
-        }
+            }
 
-    1
-    2
-    3
-    4
-    5
-    6
-    7
-    8
-    9
-    10
-    11
-    12
-    13
-    14
-    15
-    16
-    17
-    18
-
+ 
 导入MySQL
 
-mysql -uroot -p*** mysql < /usr/share/nginx/html/mysql.sql
+    mysql -uroot -p*** mysql < /usr/share/nginx/html/mysql.sql
 
-    1
+    
 
 打开浏览配置
 
