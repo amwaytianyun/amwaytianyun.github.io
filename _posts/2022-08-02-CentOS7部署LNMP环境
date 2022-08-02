@@ -1,8 +1,4 @@
 手动部署LNMP环境（CentOS 7）
-更新时间：2022-05-19 14:05
-产品详情
-相关技术圈
-我的收藏
 
 Nginx是一款小巧而高效的Web服务器软件，可帮您在Linux系统下快速方便地搭建出LNMP Web服务环境。本文介绍如何手动在ECS实例上搭建LNMP环境，其中LNMP分别代表Linux、Nginx、MySQL和PHP。
 前提条件
@@ -33,6 +29,8 @@ Nginx是一款小巧而高效的Web服务器软件，可帮您在Linux系统下�
 
     远程连接需要部署LNMP环境的ECS实例。
     具体操作，请参见连接方式概述。
+        yum install -y epel-release #先配置源
+        yum update #然后升级
     关闭防火墙。
         运行systemctl status firewalld命令，查看当前防火墙的状态。
         查看防火墙状态
@@ -59,7 +57,11 @@ Nginx是一款小巧而高效的Web服务器软件，可帮您在Linux系统下�
             如果SELinux状态参数是Disabled，则SELinux为关闭状态。
             如果SELinux状态参数是Enforcing，则SELinux为开启状态。
         关闭SELinux。如果SELinux为关闭状态可以忽略此步骤。
-        SELinux关闭的方式分为临时关闭和永久关闭，请您根据自身业务需求进行选择。具体操作，请参见开启或关闭SELinux。
+      
+        vi /etc/selinux/config
+            修改为SELINUX=disabled
+        shutdown -r now #重启
+
 
 步骤二：安装Nginx
 说明 本文只提供一个版本的Nginx作为示例，如果您需要安装其他版本的Nginx，请参见常见问题。
@@ -142,7 +144,7 @@ Nginx是一款小巧而高效的Web服务器软件，可帮您在Linux系统下�
     说明 若不添加此配置信息，后续您使用浏览器访问PHP页面时，页面将无法显示。
         运行以下命令打开Nginx配置文件。
 
-        vim /etc/nginx/nginx.conf
+        vi /etc/nginx/nginx.conf
 
         按i进入编辑模式。
         在server大括号内，修改或添加下列配置信息。
@@ -189,7 +191,8 @@ Nginx是一款小巧而高效的Web服务器软件，可帮您在Linux系统下�
     mysql_secure_installation
 
         输入MySQL的初始密码。
-        说明 在输入密码时，系统为了最大限度的保证数据安全，命令行将不做任何回显。您只需要输入正确的密码信息，然后按Enter键即可。
+        说明 在输入密码时，系统为了最大限度的保证数据安全，命令行将不做任何回显。您只需要输入正确的密码信息，
+       然后按Enter键即可。
 
         Securing the MySQL server deployment.
 
@@ -199,7 +202,8 @@ Nginx是一款小巧而高效的Web服务器软件，可帮您在Linux系统下�
 
         The existing password for the user account root has expired. Please set a new password.
 
-        New password: #输入新密码。长度为8至30个字符，必须同时包含大小写英文字母、数字和特殊符号。特殊符号包含()` ~!@#$%^&*-+=|{}[]:;‘<>,.?/
+        New password: #输入新密码。长度为8至30个字符，必须同时包含大小写英文字母、数字和特殊符号。
+        特殊符号包含()` ~!@#$%^&*-+=|{}[]:;‘<>,.?/
 
         Re-enter new password: #确认新密码。
         The 'validate_password' plugin is installed on the server.
