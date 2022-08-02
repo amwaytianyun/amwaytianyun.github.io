@@ -44,10 +44,22 @@ admin@cloudreve.org
 
  
 导入MySQL
-
-    mysql -uroot -p*** mysql < /usr/share/nginx/html/mysql.sql
-
     
+    mysql -u root -p
+    CREATE DATABASE Cloudreve;
+
+    CREATE USER cloudreve@127.0.0.1 IDENTIFIED BY 'examplepassword';
+
+    GRANT ALL ON Cloudreve.* TO cloudreve@127.0.0.1;
+
+    exit;
+    # mysql -uroot -p*** mysql < /usr/share/nginx/html/mysql.sql
+
+    chmod 777 cloudreve
+
+    chown root:root cloudreve
+
+    ./cloudreve
 
 打开浏览配置
 
