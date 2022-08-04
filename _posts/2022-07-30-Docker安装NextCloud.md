@@ -94,7 +94,7 @@ docker system prune
 # 添加自动重启 
  都测试没问题之后，需要在添加自动启动，否则服务器重启之后，相应容器不会启动
  ```
- docker update --restart=always mydql
+ docker update --restart=always mysql
  docker update --restart=always nextcloud
  ```
  
