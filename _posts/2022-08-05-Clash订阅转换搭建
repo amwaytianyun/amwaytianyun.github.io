@@ -10,3 +10,134 @@ cnpm install -g yarn
   
      git clone https://github.com/CareyWang/sub-web.git
     cd sub-web
+  
+  yarn install
+  yarn serve
+  
+  到目前为止，浏览器访问 http://服务器ip:8080/ 应该可以进行前端 sub-web 的预览了。
+  
+  修改默认后端地址
+
+找到 VPS /root/sub-web/src/views/Subconverter.vue 文件
+
+找到 257行 backendOptions:（写博客的时候是这行），替换后面的 http://127.0.0.1:25500/sub? 为 https://suc.bjdaniu.net/sub?
+
+# 更换远程规则
+
+因为这个版本更新以后，规则方面很少，经常用到的一些经典的 ACL4SSR 的规则并没有集成，大家可以看看，若是有，就不需要这样操作。
+
+VPS找到 /root/sub-web/src/views/Subconverter.vue 文件，找到 258行 remoteConfig: [（写博客的时候是这行），敲下回车，插入下面内容。若是不清楚，请看 本期讲解的视频：
+
+```
+    {
+                label: "ACL4SSR",
+                options: [
+                  {
+                    label: "ACL4SSR_Online 默认版 分组比较全 (与Github同步)",
+                    value:
+                      "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online.ini"
+                  },
+                  {
+                    label: "ACL4SSR_Online_AdblockPlus 更多去广告 (与Github同步)",
+                    value:
+                      "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_AdblockPlus.ini"
+                  },
+                  {
+                    label: "ACL4SSR_Online_NoAuto 无自动测速 (与Github同步)",
+                    value:
+                      "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_NoAuto.ini"
+                  },
+                  {
+                    label: "ACL4SSR_Online_NoReject 无广告拦截规则 (与Github同步)",
+                    value:
+                      "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_NoReject.ini"
+                  },
+                  {
+                    label: "ACL4SSR_Online_Mini 精简版 (与Github同步)",
+                    value:
+                      "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini.ini"
+                  },
+                  {
+                    label: "ACL4SSR_Online_Mini_AdblockPlus.ini 精简版 更多去广告 (与Github同步)",
+                    value:
+                      "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini_AdblockPlus.ini"
+                  },
+                  {
+                    label: "ACL4SSR_Online_Mini_NoAuto.ini 精简版 不带自动测速 (与Github同步)",
+                    value:
+                      "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini_NoAuto.ini"
+                  },
+                  {
+                    label: "ACL4SSR_Online_Mini_Fallback.ini 精简版 带故障转移 (与Github同步)",
+                    value:
+                      "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini_Fallback.ini"
+                  },
+                  {
+                    label: "ACL4SSR_Online_Mini_MultiMode.ini 精简版 自动测速、故障转移、负载均衡 (与Github同步)",
+                    value:
+                      "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini_MultiMode.ini"
+                  },
+                  {
+                    label: "ACL4SSR_Online_Full 全分组 重度用户使用 (与Github同步)",
+                    value:
+                      "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full.ini"
+                  },
+                  {
+                    label: "ACL4SSR_Online_Full_NoAuto.ini 全分组 无自动测速 重度用户使用 (与Github同步)",
+                    value:
+                      "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_NoAuto.ini"
+                  },
+                  {
+                    label: "ACL4SSR_Online_Full_AdblockPlus 全分组 重度用户使用 更多去广告 (与Github同步)",
+                    value:
+                      "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_AdblockPlus.ini"
+                  },
+                  {
+                    label: "ACL4SSR_Online_Full_Netflix 全分组 重度用户使用 奈飞全量 (与Github同步)",
+                    value:
+                      "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_Netflix.ini"
+                  },
+                  {
+                    label: "ACL4SSR 本地 默认版 分组比较全",
+                    value: "config/ACL4SSR.ini"
+                  },
+                  {
+                    label: "ACL4SSR_Mini 本地 精简版",
+                    value: "config/ACL4SSR_Mini.ini"
+                  },
+                  {
+                    label: "ACL4SSR_Mini_NoAuto.ini 本地 精简版+无自动测速",
+                    value: "config/ACL4SSR_Mini_NoAuto.ini"
+                  },
+                  {
+                    label: "ACL4SSR_Mini_Fallback.ini 本地 精简版+fallback",
+                    value: "config/ACL4SSR_Mini_Fallback.ini"
+                  },
+                  {
+                    label: "ACL4SSR_BackCN 本地 回国",
+                    value: "config/ACL4SSR_BackCN.ini"
+                  },
+                  {
+                    label: "ACL4SSR_NoApple 本地 无苹果分流",
+                    value: "config/ACL4SSR_NoApple.ini"
+                  },
+                  {
+                    label: "ACL4SSR_NoAuto 本地 无自动测速 ",
+                    value: "config/ACL4SSR_NoAuto.ini"
+                  },
+                  {
+                    label: "ACL4SSR_NoAuto_NoApple 本地 无自动测速&无苹果分流",
+                    value: "config/ACL4SSR_NoAuto_NoApple.ini"
+                  },
+                  {
+                    label: "ACL4SSR_NoMicrosoft 本地 无微软分流",
+                    value: "config/ACL4SSR_NoMicrosoft.ini"
+                  },
+                  {
+                    label: "ACL4SSR_WithGFW 本地 GFW列表",
+                    value: "config/ACL4SSR_WithGFW.ini"
+                  }
+                ]
+              },
+              
+              ```
