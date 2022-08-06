@@ -117,6 +117,14 @@ Code_hvdCRwTZoS.jpg
 
 首先运行安装脚本
 
+wget -N –no-check-certificate https://raw.githubusercontent.com/iiiiiii1/doubi/master/caddy_install.sh && chmod +x caddy_install.sh && bash caddy_install.sh
+
+#备用地址
+
+wget -N –no-check-certificate https://www.moerats.com/usr/shell/Caddy/caddy_install.sh && chmod +x caddy_install.sh && bash caddy_install.sh
+
+	以下为备用但不成功方案
+	{
 	yum -y install yum-plugin-copr
 
  	yum copr enable @caddy/caddy
@@ -124,6 +132,7 @@ Code_hvdCRwTZoS.jpg
  	whereis caddy
 	systemctl start caddy
 	systemctl enable caddy
+	}
 	
 	这个命令已经失效：wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubiBackup/doubi/master/caddy_install.sh && chmod +x caddy_install.sh && bash caddy_install.sh
 
