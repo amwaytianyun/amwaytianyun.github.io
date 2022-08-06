@@ -1,11 +1,4 @@
 
-己思
-
-    menu
-
-    person
-    一键登录
-
 如何快速攒一个订阅转换API|简单十步搭建subweb
 
     原文转载自 「Sabrina的万事屋」 ( https://merlinblog.xyz/wiki/api-dajian.html ) By Sabrina
@@ -55,6 +48,7 @@ docker pull niconewbeee/subweb:basic
 4.克隆源码
 
 执行下边命令以clone最新的源码：
+yum install git
 
 git clone -b admin https://github.com/lzdnico/subweb.git
 
@@ -105,7 +99,7 @@ docker run  -d --name=subweb --restart=always -v /root/subweb:/subweb -p 10086:1
 
 执行此命令：
 
-vim subweb/api/aff.py
+vi /root/subweb/api/aff.py
 
 此步骤应该修改的内容包括：
 
@@ -123,7 +117,15 @@ Code_hvdCRwTZoS.jpg
 
 首先运行安装脚本
 
-wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubiBackup/doubi/master/caddy_install.sh && chmod +x caddy_install.sh && bash caddy_install.sh
+	yum -y install yum-plugin-copr
+
+ 	yum copr enable @caddy/caddy
+	yum -y install caddy
+ 	whereis caddy
+	systemctl start caddy
+	systemctl enable caddy
+	
+	wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubiBackup/doubi/master/caddy_install.sh && chmod +x caddy_install.sh && bash caddy_install.sh
 
 复制粘贴以下命令到SSH执行：
 
