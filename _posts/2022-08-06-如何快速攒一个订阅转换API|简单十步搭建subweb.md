@@ -17,7 +17,7 @@ subconverter项目地址：https://github.com/tindy2013/subconverter
 Demo: https://bianyuan.xyz/
 [scode type="lblue"]由于多次被滥用和攻击，subweb作者@NicoNewBeee已停止STC Api的运行。请各位大佬们高抬贵手，放过公益项目。[/scode]
 目前本站的公益API项目运行正常，VPS和其它杂项费用均靠各位大佬的赞赏维持。感谢各位的赞助，希望这项公益项目能够长久运行。
-注意：
+注意： 
 
 这里以Ubantu16.04为例，其它系统所使用的安装命令请自行研究。[其实是因为我用的是阿里云轻量，配置比较菜，懒得折腾]
 前期准备：
@@ -125,7 +125,7 @@ Code_hvdCRwTZoS.jpg
 	systemctl start caddy
 	systemctl enable caddy
 	
-	wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubiBackup/doubi/master/caddy_install.sh && chmod +x caddy_install.sh && bash caddy_install.sh
+	这个命令已经失效：wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubiBackup/doubi/master/caddy_install.sh && chmod +x caddy_install.sh && bash caddy_install.sh
 
 复制粘贴以下命令到SSH执行：
 
