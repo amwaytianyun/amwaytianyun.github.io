@@ -222,10 +222,13 @@ tail -f /tmp/caddy.log
 
 docker restart subweb
 
-最后添加开机启动
-vi /etc/rc.d/rc.local
-	
+每次开机后手动启动
 
+	
+	ulimit -n 8192
+	/etc/init.d/caddy start
+
+	
 	
 
 其它
