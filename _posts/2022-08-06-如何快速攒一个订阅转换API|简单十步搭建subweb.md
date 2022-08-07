@@ -222,12 +222,20 @@ tail -f /tmp/caddy.log
 
 docker restart subweb
 
+最后添加开机启动
+vi /etc/rc.d/rc.local
+	
+
+	
+
 其它
 管理员系统
 
 新版API支持后台管理，可以在线修改pref.ini等默认配置，支持在线重启前、后端等。
 访问地址：ip:10086/admin
+地址为：../api/aff.py
 管理员密码: api/aff.py的passwd参数
+
 后台管理.jpg
 监控服务器运行状态
 
