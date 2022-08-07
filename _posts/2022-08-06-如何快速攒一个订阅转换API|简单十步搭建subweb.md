@@ -1,73 +1,73 @@
 
-如何快速攒一个订阅转换API|简单十步搭建subweb
+# 如何快速攒一个订阅转换API|简单十步搭建subweb
 
-    原文转载自 「Sabrina的万事屋」 ( https://merlinblog.xyz/wiki/api-dajian.html ) By Sabrina
+  原文转载自 「Sabrina的万事屋」 ( https://merlinblog.xyz/wiki/api-dajian.html ) By Sabrina
 
-    预计阅读时间 7 分钟（共 5116 个字， 15 张图片， 5 个链接）
-
-[scode type="lblue"]2020/03/27更新说明：更正了部分安装步骤。 [/scode]
-[scode type="lblue"]2020/03/04更新说明：更正了部分安装命令。 [/scode]
-简介：
 
 本文介绍的订阅转换API是基于subconverter和Flask框架的subweb项目。
-subweb项目地址：https://github.com/lzdnico/subweb/tree/admin
-subconverter项目地址：https://github.com/tindy2013/subconverter
+	
+	subweb项目地址：https://github.com/lzdnico/subweb/tree/admin
+	subconverter项目地址：https://github.com/tindy2013/subconverter
 之前使用Nginx搭建的时候，没问题，但是新版后端总是由于各种玄学因素出毛病。在咨询了多方大佬以后，找到了Caddy的解决方案，特此记录下来。
 特别鸣谢：flycloud大佬
-Demo: https://bianyuan.xyz/
-[scode type="lblue"]由于多次被滥用和攻击，subweb作者@NicoNewBeee已停止STC Api的运行。请各位大佬们高抬贵手，放过公益项目。[/scode]
-目前本站的公益API项目运行正常，VPS和其它杂项费用均靠各位大佬的赞赏维持。感谢各位的赞助，希望这项公益项目能够长久运行。
+	
+	Demo: https://bianyuan.xyz/
+	[scode type="lblue"]由于多次被滥用和攻击，subweb作者@NicoNewBeee已停止STC Api的运行。请各位大佬们高抬贵手，放过公益项目。[/scode]
+
 注意： 
 
 这里以Ubantu16.04为例，其它系统所使用的安装命令请自行研究。[其实是因为我用的是阿里云轻量，配置比较菜，懒得折腾]
 前期准备：
 
-① 一台VPS，配置不需要太好。
-② 两个域名，一个用于前端访问，一个用于后端订阅访问。（请提前做好域名解析以备用）
+	① 一台VPS，配置不需要太好。
+	② 两个域名，一个用于前端访问，一个用于后端订阅访问。（请提前做好域名解析以备用）
 本文以api.bianyuan.xyz代表前端访问域名，dy.bianyuan.xyz代表后端访问域名。牵扯到域名的操作请自行将相关参数修改为自己的域名。
-解析域名.jpg
-[scode type="green"]建议开启CloudFlare的CDN，避免VPS的IP被橄榄。[/scode]
-正式开始
-1.执行 apt update 命令以更新系统。
-2.安装docker
 
-curl -sSL https://get.docker.com/ | sh
+	[scode type="green"]建议开启CloudFlare的CDN，避免VPS的IP被橄榄。[/scode]
+正式开始
+	
+	1.执行 apt update 命令以更新系统。
+	2.安装docker
+
+	curl -sSL https://get.docker.com/ | sh
 
 安装完毕执行下边命令重启docker服务：
 
-systemctl start docker
-systemctl enable docker
+	systemctl start docker
+	systemctl enable docker
 
 3.拉取docker镜像
 
 执行下边命令拉取最新docker镜像
 
-docker pull niconewbeee/subweb:basic
+	docker pull niconewbeee/subweb:basic
 
-拉取docker镜像.jpg
+
 4.克隆源码
 
 执行下边命令以clone最新的源码：
-yum install git
 
-git clone -b admin https://github.com/lzdnico/subweb.git
+	yum install git -y
 
-如果没有git的话，执行此命令 apt install git 来安装git，然后再克隆源码。
-克隆源码.jpg
+	git clone -b admin https://github.com/lzdnico/subweb.git
+
+
 5.修改权限&客制化
 
 执行以下命令以修改后端权限和启动脚本权限：
 
-chmod 777 /root/subweb/config/subconverter
-chmod 777 /root/subweb/docker.sh
+	chmod 777 /root/subweb/config/subconverter
+	chmod 777 /root/subweb/docker.sh
 
 客制化修改：
 config和templates里的文件可以按需修改。
 ⭐⭐必须修改的项目：⭐⭐
-务必修改config/pref.ini里的api_access_token，以及managed_config_prefix。
-否则会导致外部资源重定向到127.0.0.1
+	
+	务必修改config/pref.ini里的api_access_token，以及managed_config_prefix。
+	否则会导致外部资源重定向到127.0.0.1
+	vi /root/subweb/config/pref.ini
 举个栗子👇
-
+```
 [common]
 api_mode=true
 ;api_access_token 修改成自己的
@@ -89,27 +89,26 @@ rename_node=\(?((x|X)?(\d+)(\.?\d+)?)((\s?倍率?)|(x|X))\)?@$1x
 write_managed_config=true
 ;managed_config_prefix 修改成自己的
 managed_config_prefix=https://dy.bianyuan.xyz #改为自己的订阅前端（和aff.py中的subip值保持一致）
-
+```
 6.运行docker实例
 
-docker run  -d --name=subweb --restart=always -v /root/subweb:/subweb -p 10086:10086 -p 10010:10010  niconewbeee/subweb:basic
+	docker run  -d --name=subweb --restart=always -v /root/subweb:/subweb -p 10086:10086 -p 10010:10010  niconewbeee/subweb:basic
 
-运行docker.jpg
+
 7.修改配置文件
 
 执行此命令：
 
-vi /root/subweb/api/aff.py
+	vi /root/subweb/api/aff.py
 
 此步骤应该修改的内容包括：
 
-① subip 修改为 https://dy.bianyuan.xyz
+	① subip 修改为 https://dy.bianyuan.xyz
 
-② apiip 修改为 https://api.bianyuan.xyz
+	② apiip 修改为 https://api.bianyuan.xyz
 
-③ passwd 为了安全一定要修改
-如图：
-修改aff.py参数.jpg
+	③ passwd 为了安全一定要修改
+
 提示：单击键盘上的字母i进入编辑模式，此时左下角会显示-- INSERT --字样。
 编辑完成后按下Esc键退出编辑模式，输入英文冒号和wq [即:wq] ，然后按下回车键，保存更改。
 Code_hvdCRwTZoS.jpg
@@ -169,7 +168,10 @@ dy.bianyuan.xyz {
 配置Caddy.jpg
 启动脚本
 
-/etc/init.d/caddy start
+ln -s /usr/local/caddy/caddy /usr/bin/caddy
+ulimit -n 8192
+caddy #这是前台运行
+/etc/init.d/caddy start #这是后台运行
 
 [scode type="lblue"]此配置会自动续签SSL证书，简单省心。[/scode]
 不想自动申请，想用已经事先申请好的其它SSL证书？请看这里👇
