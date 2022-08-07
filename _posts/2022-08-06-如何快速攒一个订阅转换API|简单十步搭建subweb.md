@@ -136,7 +136,7 @@ wget -N –no-check-certificate https://www.moerats.com/usr/shell/Caddy/caddy_in
 	这个命令已经失效：wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubiBackup/doubi/master/caddy_install.sh && chmod +x caddy_install.sh && bash caddy_install.sh
 
 复制粘贴以下命令到SSH执行：
-
+```
 echo "api.bianyuan.xyz {
  gzip
  tls 123@gmail.com
@@ -161,7 +161,7 @@ dy.bianyuan.xyz {
     header_upstream X-Forwarded-Proto {scheme}
   }
 }" > /usr/local/caddy/Caddyfile
-
+```
 请注意：
 将8.8.8.8替换为自己服务器的IP
 将123@gmail.com替换为自己的邮箱
