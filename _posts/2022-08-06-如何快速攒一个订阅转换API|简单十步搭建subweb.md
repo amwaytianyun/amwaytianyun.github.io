@@ -226,7 +226,10 @@ docker restart subweb
 
 	
 	ulimit -n 8192
-	/etc/init.d/caddy start
+	/etc/init.d/caddy restart
+	
+	或者vi /root/caddy.sh
+	把这两条添加进去，每次开机执行sh caddy.sh即可
 
 	
 	
