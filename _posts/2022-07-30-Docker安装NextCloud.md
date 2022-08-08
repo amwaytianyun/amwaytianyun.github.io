@@ -70,16 +70,20 @@ mysql> show databases;
 +--------------------+
 2 rows in set (0.00 sec)
 ```
+退出到root
+
+           exit;
+           exit;
 # 安装NextCloud
 ```
 docker pull nextcloud
 docker run -d --name nextcloud \
     -v nextcloud:/var/www/html \
     --link mysql:mysql \
-    -p 8080:80 \
+    -p 12138:80 \
     nextcloud
  ```
- 打开浏览器，输入ip:8080即可使用，首次打开会是一个管理员注册页面，数据库选择mysql/MariaDB即可，注意host栏不用填写地址，一定要填写mysql。经过测试Docker安装后的nextcloud性能下降很多，这里只是给出方法进行测试，不建议这样安装。
+ 打开浏览器，输入ip:12138即可使用，首次打开会是一个管理员注册页面，数据库选择mysql/MariaDB即可，注意host栏不用填写地址，一定要填写mysql。经过测试Docker安装后的nextcloud性能下降很多，这里只是给出方法进行测试，不建议这样安装。
  
  
  
