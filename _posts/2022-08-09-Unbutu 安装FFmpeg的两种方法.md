@@ -2,6 +2,8 @@ Unbutu 安装FFmpeg的两种方法
 Geek.Fan
 于 2022-05-31 21:27:10 发布 320
 收藏
+[原地址](https://blog.csdn.net/fanyun_01/article/details/125073651)
+
 分类专栏： FFmpeg开发实战 文章标签： p2p 网络协议 网络
 版权
 FFmpeg开发实战 专栏收录该内容
@@ -18,11 +20,11 @@ FFmpeg开发实战 专栏收录该内容
 
  我这里下载的是一个5.0.1的一个比较新的版本：
 
- 
+        wget https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/ffmpeg/7:5.1-2ubuntu1/ffmpeg_5.1.orig.tar.xz
 
 2、解压
 
-tar -xvf ffmpeg_5.0.1.orig.tar.xz
+        tar -xvf ffmpeg_5.1.orig.tar.xz
 
 3、安装yasm
 
@@ -32,23 +34,24 @@ sudo apt install -y yasm
 
 基础选项：
 
-./configure --enable-shared --prefix=/usr/local/ffmpeg
+        cd ffmpeg-5.1
+        ./configure --enable-shared --prefix=/usr/local/ffmpeg
 
 5、增加H264支持
 
-./configure --prefix=/usr/local/ffmpeg --enable-shared --disable-static --disable-doc --enable-gpl --enable-libx264
+        ./configure --prefix=/usr/local/ffmpeg --enable-shared --disable-static --disable-doc --enable-gpl --enable-libx264
 
-6、增加GPU（CUDA）加速支持，则需要在尾部增加
+        6、增加GPU（CUDA）加速支持，则需要在尾部增加
 
---enable-cuda --enable-cuvid
+        --enable-cuda --enable-cuvid
 
-7、同时下载并编译安装 FFmpeg NVIDIA headers (“ffnvcodec”)
+        7、同时下载并编译安装 FFmpeg NVIDIA headers (“ffnvcodec”)
 
     git clone https://git.videolan.org/git/ffmpeg/nv-codec-headers.git
      
     cd nv-codec-headers
 
-(# 有多个分支，根据GPU驱动版本可能需要切换分支，如git checkout sdk/9.1)
+        (# 有多个分支，根据GPU驱动版本可能需要切换分支，如git checkout sdk/9.1)
 
     make
      
@@ -60,7 +63,7 @@ sudo apt install -y yasm
 
 8、编译安装
 
-    make
+    make #时间好久
      
     make install
 
